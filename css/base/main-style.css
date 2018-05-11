@@ -1,0 +1,35 @@
+/* Why Choose us section */
+.why-choose-us{
+    background-color: rgb(243, 243, 243);
+    padding: 80px 0;
+}
+
+.why-choose-us-box{
+    text-align: center;
+    background-color: #fff;
+    padding: 5px;
+    box-shadow: 0 0 5px grey;
+}
+.food-fa-icon{
+    background-color: #000;
+    color: #fff;
+    width: 60px;
+    padding: 20px;
+    border-radius: 50%;
+    margin-top: -30px;
+    box-shadow: 0 0 20px grey;
+}
+.why-choose-us-box h5 {
+    margin-top: 20px;
+}
+
+.why-choose-us-box p {
+    margin-top: 20px;
+}
+
+/* Our story section */
+
+.story-picture-1{
+    width: 250px;
+}
+
