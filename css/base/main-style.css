@@ -1,5 +1,5 @@
 /* Why Choose us section */
-.why-choose-us{
+.why-choose-us-section{
     background-color: rgb(243, 243, 243);
     padding: 80px 0;
 }
@@ -33,3 +33,55 @@
     width: 250px;
 }
 
+.carousel-indicators li {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+/* Cooking video section */
+.cooking-video-section{
+    position: relative;
+}
+.cooking-video{
+    height: 350px;
+    width: 100%;
+}
+.video{
+    position: relative;
+}
+.video:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    opacity: .4; 
+}
+
+.cooking-video-text{
+   position: absolute;
+   color: #d3d3d3;
+   left: 20px;
+   right: 20px; 
+   top: -300px;
+}
+.cooking-video-text i {
+    font-size: 80px;
+    margin-bottom: 20px;
+    cursor: pointer;
+    transition-duration: .4s;
+}
+.cooking-video-text i:hover{
+    color: #9c9999;
+}
+
+/* Food Menu section */
+
+.breakfest-image{
+    width: 200px;
+    margin-left: 40px;
+}
