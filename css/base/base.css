@@ -1,3 +1,8 @@
+body{
+    /* font-family: 'Lato', sans-serif; */
+    font-family: 'Quicksand', 'Lato', sans-serif;
+}
+
 p {
     line-height: 35px;
 }

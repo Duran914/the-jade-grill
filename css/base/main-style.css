@@ -83,5 +83,76 @@
 
 .breakfest-image{
     width: 200px;
-    margin-left: 40px;
+    /* margin-left: 40px; */
+}
+
+.breakfest{
+    margin: 0 50px;
+}
+
+.food-text{
+    margin-left: 220px;
+    margin-top: -135px;
+}
+
+.food-price{
+    position: absolute;
+    background-color: #fff;
+    width: 30px;
+    top: 90px;
+    left: 30px;
+}
+
+
+.food-text h5 {
+    font-size: 18px;
+}
+.food-text p {
+    font-size: 14px;
+}
+
+/* Meet our staff */
+
+.meet-the-chefs-section{
+    background-color: #e6e6e6;
+}
+
+.avatar-staff-image{
+    width: 255px;
+}
+.staff-image-text{
+    position: absolute;
+    left: 35px;
+    right: 35px;
+    top: 190px;
+    bottom: 0;
+    background-color: #e6e6e69f;
+}
+.staff-join-us{
+    text-align: center;
+    width: 255px;
+    height: 255px;
+    background-color: rgba(168, 36, 21, 0.547);
+    color: #e6e6e6;
+    margin-right: 0px;
+    padding: 5px;
+
+    /* Kinda hackey...but works for now :P */
+    margin-left: 51px;
+}
+@media screen and (max-width: 1200px){
+    .staff-join-us{
+        margin: auto;
+    }
+}
+.red-btn{
+    margin-top: 35px;
+    padding: 10px 50px;
+    color: #e6e6e6;
+    border: 2px solid #e6e6e6;
+    background-color: rgba(172, 102, 94, 0.547);
+}
+.red-btn:hover{
+    color: rgba(168, 36, 21, 0.547);
+    background-color: #e6e6e6;
 }
