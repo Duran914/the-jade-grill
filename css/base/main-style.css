@@ -39,6 +39,10 @@
     border-radius: 50%;
     cursor: pointer;
 }
+.story-slideshow{
+    width: 90%;
+    margin-left: 40px;
+}
 
 /* Cooking video section */
 .cooking-video-section{
@@ -100,7 +104,7 @@
     background-color: #fff;
     width: 30px;
     top: 90px;
-    left: 30px;
+    left: 35px;
 }
 
 
@@ -110,20 +114,28 @@
 .food-text p {
     font-size: 14px;
 }
+.dish{
+    margin-bottom: 100px;
+}
 
 /* Meet our staff */
 
-.meet-the-chefs-section{
+.meet-the-staff-section{
     background-color: #e6e6e6;
+}
+
+.staff-image{
+    margin-bottom: 15px;
 }
 
 .avatar-staff-image{
     width: 255px;
 }
+
 .staff-image-text{
     position: absolute;
-    left: 35px;
-    right: 35px;
+    left: 5px;
+    right: 5px;
     top: 190px;
     bottom: 0;
     background-color: #e6e6e69f;
@@ -140,11 +152,6 @@
     /* Kinda hackey...but works for now :P */
     margin-left: 51px;
 }
-@media screen and (max-width: 1200px){
-    .staff-join-us{
-        margin: auto;
-    }
-}
 .red-btn{
     margin-top: 35px;
     padding: 10px 50px;
@@ -155,4 +162,93 @@
 .red-btn:hover{
     color: rgba(168, 36, 21, 0.547);
     background-color: #e6e6e6;
+}
+
+@media screen and (max-width: 1200px){
+    .staff-join-us{
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 992px){
+.story-slideshow{
+    width: 85%;
+    margin: auto;
+    }
+.story-picture{
+    text-align: center;
+    margin-top: 10px;
+    }
+.story-picture-1{
+    width: 50%;
+}
+.breakfest-image{
+    margin-bottom: 10px;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .why-choose-us-box{
+        margin-top: 40px;
+    }
+    .avatar-staff-image{
+        width: 70%;
+    }
+    .staff-image-text{
+        position: absolute;
+        top: 280px;
+    }
+    .staff-join-us{
+        width: 350px;
+    }
+    .dish{
+        text-align: center;
+         margin-bottom: 50px;
+    }
+    .breakfest{
+        margin: 0;
+    }
+
+    .breakfest-image{
+        width: 90%;
+    }
+    .food-text {
+        margin-left: 0px; 
+        margin-top: 0px;
+        text-align: center;
+    }
+    .food-price {
+        position: absolute;
+        background-color: #fff;
+        width: 62px;
+        top: 5px;
+        left: 55px;
+        padding: 10px;
+        font-size: 30px;
+    }
+} 
+
+@media screen and (max-width: 576px){
+    .avatar-staff-image{
+        width: 255px;
+    }
+    .staff-image-text{
+        position: absolute;
+        top: 190px;
+    }
+    .staff-join-us{
+        width: 255px;
+    }
+    .food-price {
+        position: absolute;
+        background-color: #fff;
+        width: 40px;
+        padding: 10px;
+        font-size: 15px;
+    }
+
+    .breakfest-image{
+        width: 100%;
+    }
+    
 }
