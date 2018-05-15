@@ -53,3 +53,22 @@
     color: rgba(168, 36, 21, 0.547);
     background-color: #e6e6e6;
 }
+
+@media screen and (max-width: 768px){
+    .main-carousel-heading{
+        top: -10px;
+        left: 0px;
+        right: 0px; 
+        overflow: hidden;
+    }
+    .main-heading{
+        font-size: 55px;
+        color: #e6e6e6;
+    }
+}
+
+@media screen and (max-width: 450px){
+    .slideShowBackgroundImg{
+        height: 400px;
+    }
+}

@@ -16,5 +16,18 @@
 
 .navbar-nav .nav-item .nav-link:hover{
     color: rgba(168, 36, 21, 0.547);
-    border-bottom: 2px solid rgba(168, 36, 21, 0.547);;
+    border-bottom: 2px solid rgba(168, 36, 21, 0.547);
+}
+
+.navbar-light .navbar-toggler{
+    background: rgba(168, 36, 21, 0.547);
+    border: 2px solid rgba(168, 36, 21, 0.547);
+}
+@media screen and (max-width: 992px){
+.navbar-collapse{
+    text-align: center;
+    }
+    .nav-item .nav-link{
+        font-size: 20px;
+    }
 }
