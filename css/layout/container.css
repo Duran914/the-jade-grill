@@ -3,7 +3,7 @@
     padding: 5px;
 }
 
-/* container hich removes bootstrap container defaults */
+/* removes bootstrap container defaults */
 .container-fluid {
     margin: 0;
     padding-top: 4%;

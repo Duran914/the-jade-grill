@@ -10,7 +10,7 @@
     <title>The Jade Grill</title>
   </head>
   <body>
-    <section class="main-carousel-section">
+    <section class="main-carousel-section" id="top">
             <div class="main-carousel-heading jumbotron jumbotron-fluid">
                     <div class="col-12 text-center">
                       <h1 class="main-heading">The Jade Grill</h1>
@@ -41,25 +41,19 @@
         <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
             <ul class="navbar-nav">
             <li class="nav-item active">
-                <a class="nav-link" href="#">Home</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
+                <a class="nav-link" href="#top">Home</a>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#aboutUs">About</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Menu</a>
+                <a class="nav-link" href="#menu">Menu</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Team</a>
+                <a class="nav-link" href="#ourTeam">Team</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link disabled" href="#">Gallery</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link disabled" href="#">Contact</a>
+                <a class="nav-link" href="#contactUs">Contact</a>
             </li>
             </ul>
         </div>
@@ -103,10 +97,10 @@
             </div>
         </div>
     </section >
-<section class="our-story-section">
+<section class="our-story-section pt-5 pb-5" id="aboutUs">
     <div class="container">
     <div class="row">
-        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 mt-5">
+        <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="why-choose-us-headings text-center">
                 <h2>OUR STORY</h2>
                 <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
@@ -186,7 +180,7 @@
     </div>
 </div>
 </section>
-<section class="food-menu-section mt-5 mb-5">
+<section class="food-menu-section pt-5 pb-2" id="menu">
     <div class="container-fluid">
     <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
@@ -195,6 +189,7 @@
                 <p>Lorem ipsum dolor sit amet</p>
             </div>
         </div>
+    </div>
     </div>
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="breakfest">
@@ -276,12 +271,12 @@
     </div>
 </div>
 </section>
-<section class="meet-the-staff-section">
+<section class="meet-the-staff-section pt-5 pb-5" id="ourTeam">
     <div class="container">
       <div class="row">
         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
             <div class="food-menu-text text-center">
-                <h2>MEET OUR STAFF</h2>
+                <h2>MEET OUR TEAM</h2>
                 <p>Lorem ipsum dolor sit amet</p>
             </div>
         </div>
@@ -316,8 +311,6 @@
             </div>
             </div>
         </div>
-    <!-- </div>
-    <div class="row"> -->
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-4">
                     <div class="staff-image text-center">
                         <img class="avatar-staff-image" src="assets/images/green_avatar2.png" alt="" srcset="">
@@ -339,15 +332,113 @@
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3">
                     <div class="staff-join-us">
                         <i class="fas fa-plus fa-3x"></i>
-                        <p> Laudantium repellendus autem eos consequatur voluptate!</p>
-                        <button class="btn red-btn">JOIN US</button>
+                        <p>Here at Jade Grill, we are always looking for new applicants!</p>
+                        <button class="btn red-btn">Apply!</button>
+                    </div>
+                </div>
+            </div>
+            <div class="company-statements pt-5">
+            <div class="row">
+                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                    <div class="statement">
+                        <h3>OUR MISSION</h3>
+                        <hr class="hr-Statement">
+                        <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                            Earum nesciunt sequi nihil in sapiente mollitia consequatur soluta, 
+                            inventore, eveniet beatae corporis quo praesentium obcaecati expedita dolores.</P>
+                    </div>
+                 </div>
+                 <div class="col-sm-12 col-md-6 col-lg-6 col-xl-6">
+                        <div class="statement">
+                            <h3>OUR SERVICE</h3>
+                            <hr class="hr-Statement">
+                            <P>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                                Earum nesciunt sequi nihil in sapiente mollitia consequatur soluta, 
+                                inventore, eveniet beatae corporis quo praesentium obcaecati expedita dolores.</P>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</div>
 </section>
+
+<section class="contact-us-section pt-5 pb-5" id="contactUs">
+    <div class="container">
+            <div class="row">
+                <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="contact-us-header text-center">
+                        <h2>WE WANT TO HEAR FROM YOU</h2>
+                        <p>Lorem ipsum dolor sit amet</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+                <div class="row">
+                    <div class="col-sm-12 col-md-12 col-lg-10 col-xl-8 mx-auto">
+                        <form action="" class="contact-form mb-5">
+                        <div class="form-group">
+                            <label for="name">Your Name</label>
+                            <input type="text" class="form-control" id="nameField" placeholder="Enter you name">
+                            </div>
+                        <div class="form-group">
+                            <label for="email">Your Email</label>
+                            <input type="email" class="form-control" id="emailField" placeholder="Enter your email">
+                        </div>
+                        <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea class="form-control message-field" id="messageField" rows="5"></textarea>
+                              </div>
+                        <input type="submit" class="form-submit-btn" value="Send">
+                        </form>
+                    </div>
+                </div>
+            </div>
+</section>
+<section class="company-info-section pt-5 pb-5">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12 col-md-4 col-4-lg col-xl-4">
+                <div class="company-info-text">
+                    <h5>ABOUT THE HOUSE</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. 
+                        Delectus blanditiis laudantium reiciendis eum dolores quis id 
+                        quaerat officiis aliquid debitis odit totam.</p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-4-lg col-xl-4">
+                <div class="company-info-text">
+                    <h5>CONTACT DETAILS</h5>
+                    <p> 234 Jade Street, Los Angeles, CA 90001 <br>
+                        (555)-5555-5555 
+                    </p>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-4 col-4-lg col-xl-4">
+                <div class="company-info-text">
+                    <h5>OPERATING HOURS</h5>
+                    <p><strong class="company-info-hours">Monday-Thursday</strong><br>
+                       7:00am-8:00pm<br>
+                       <strong class="company-info-hours">Saturday-Sunday</strong><br>
+                       8:00am-10:0pm</p>
+                    </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="footer-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-11 col-md-10 col-lg-10 col-xl-10">
+                <p>&copy; 2018 The Jade Grill. All Rights Reservered</p>
+            </div>
+            <div class="col-sm-1 col-md-2 col-lg-2 col-xl-2">
+                    <a href="#top"><i class="fas fa-arrow-up"></i></a>
+                </div>
+        </div>
+    </div>
+</footer>
+
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
