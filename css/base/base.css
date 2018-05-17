@@ -11,3 +11,11 @@ p {
     margin-right: 0;
     margin-left: 0;
 }
+
+/* Removes boostrap blue box shadow around button/link/a */
+button:focus, button:active, 
+a:focus, a:active,
+input[type="submit"]:focus, input[type="submit"]:active {
+  outline: none !important;
+  box-shadow: none !important;
+}

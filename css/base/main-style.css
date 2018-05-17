@@ -19,6 +19,10 @@
     margin-top: -30px;
     box-shadow: 0 0 20px grey;
 }
+
+.why-choose-us-headings h2{
+    margin-bottom: 40px;
+}
 .why-choose-us-box h5 {
     margin-top: 20px;
 }
@@ -86,8 +90,7 @@
 /* Food Menu section */
 
 .breakfest-image{
-    width: 200px;
-    /* margin-left: 40px; */
+    width: 280px;
 }
 
 .breakfest{
@@ -95,18 +98,19 @@
 }
 
 .food-text{
-    margin-left: 220px;
-    margin-top: -135px;
+    margin-left: 290px;
+    margin-top: -165px;
 }
 
 .food-price{
     position: absolute;
-    background-color: #fff;
-    width: 30px;
+    background-color: rgba(201, 200, 200, 0.788);
+    width: 50px;
     top: 90px;
     left: 35px;
+    font-size: 30px;
+    
 }
-
 
 .food-text h5 {
     font-size: 18px;
@@ -115,7 +119,7 @@
     font-size: 14px;
 }
 .dish{
-    margin-bottom: 100px;
+    margin-bottom: 150px;
 }
 
 /* Meet our staff */
@@ -138,7 +142,7 @@
     right: 5px;
     top: 190px;
     bottom: 0;
-    background-color: #e6e6e69f;
+    background-color: rgba(229, 229, 229, 0.624);
 }
 .staff-join-us{
     text-align: center;
@@ -162,6 +166,97 @@
 .red-btn:hover{
     color: rgba(168, 36, 21, 0.547);
     background-color: #e6e6e6;
+}
+
+.company-statements{
+    text-align: center;
+}
+
+.hr-Statement{
+    width: 50%;
+    border-color: rgba(168, 36, 21, 0.547);
+}
+
+/* Contact form section */
+
+.contact-us-section{
+    background-image: url("../../assets/images/contact-bg.jpg");
+    background-size: cover;
+    position: relative;
+}
+
+ .contact-us-section::before{
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: #000;
+    opacity: .7; 
+} 
+
+.contact-us-header{
+    color: #cecece;
+}
+.contact-form label{
+    color: #cecece;
+    font-weight: bold;
+    font-size: 18px;
+}
+.contact-form input, .contact-form textarea {
+    background-color: transparent;
+    color: #cecece;
+    border-radius: 0px;
+}
+.contact-form input:focus, .contact-form textarea:focus{
+    background-color: transparent;
+    border-color: #cecece;
+    color: #cecece;
+    box-shadow: 0 0 transparent;
+}
+.contact-form ::placeholder{
+    color: #cecece;
+}
+.contact-form .form-submit-btn{
+    padding: 10px;
+    width: 80px;
+    float: right;
+    transition-duration: .4s;
+    cursor: pointer;
+}
+.contact-form .form-submit-btn:hover{
+    background-color: #e6e6e6;
+    color: rgba(168, 36, 21, 0.547);
+}
+
+/* Company infomation section */
+
+.company-info-section{
+    background-color: #000;
+    color: #cecece;
+    text-align: center;
+}
+.company-info-text p{
+    color: #cececea8;
+    text-align: center;
+    font-size: 14px;
+}
+.company-info-hours{
+    color: #cecece;
+}
+
+/* Footer */
+.fa-arrow-up{
+    background-color: rgba(172, 102, 94, 0.547);
+    color: #fff;
+    padding: 10px;
+    cursor: pointer;
+    transition-duration: .4s;
+    float: right;
+}
+.fa-arrow-up:hover{
+    color: #000;
 }
 
 @media screen and (max-width: 1200px){
@@ -226,6 +321,16 @@
         padding: 10px;
         font-size: 30px;
     }
+    .story-picture-1{
+        width: 70%;
+    }
+    .story-slideshow{
+        width: 100%;
+        }
+    .contact-form .form-submit-btn{
+        width: 100%;
+        float: none;
+    }
 } 
 
 @media screen and (max-width: 576px){
@@ -249,6 +354,10 @@
 
     .breakfest-image{
         width: 100%;
+    }
+
+    .story-picture-1{
+        width: 70%;
     }
     
 }

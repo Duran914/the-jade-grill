@@ -21,7 +21,6 @@
 
 .navbar-light .navbar-toggler{
     background: rgba(168, 36, 21, 0.547);
-    border: 2px solid rgba(168, 36, 21, 0.547);
 }
 @media screen and (max-width: 992px){
 .navbar-collapse{
