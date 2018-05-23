@@ -1,4 +1,7 @@
 /* Navbar */
+.navigationBar-section{
+    transition-duration: .8s;
+}
 .navbar{
     padding: 10px 30px;
     background-color: #fff;
@@ -22,7 +25,16 @@
 .navbar-light .navbar-toggler{
     background: rgba(168, 36, 21, 0.547);
 }
-@media screen and (max-width: 992px){
+
+.sticky{
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 16;
+    box-shadow: 0 0 15px;
+  }
+
+@media screen and (max-width: 769px){
 .navbar-collapse{
     text-align: center;
     }

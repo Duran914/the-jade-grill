@@ -1,7 +1,7 @@
 /* Why Choose us section */
 .why-choose-us-section{
     background-color: rgb(243, 243, 243);
-    padding: 80px 0;
+    /* padding: 80px 0; */
 }
 
 .why-choose-us-box{
@@ -20,9 +20,10 @@
     box-shadow: 0 0 20px grey;
 }
 
-.why-choose-us-headings h2{
+/* .why-choose-us-headings h2{
     margin-bottom: 40px;
-}
+} */
+
 .why-choose-us-box h5 {
     margin-top: 20px;
 }
@@ -42,6 +43,8 @@
     height: 15px;
     border-radius: 50%;
     cursor: pointer;
+    position: relative;
+    z-index: -1;
 }
 .story-slideshow{
     width: 90%;
@@ -105,11 +108,10 @@
 .food-price{
     position: absolute;
     background-color: rgba(201, 200, 200, 0.788);
-    width: 50px;
+    width: 55px;
     top: 90px;
     left: 35px;
     font-size: 30px;
-    
 }
 
 .food-text h5 {
@@ -138,11 +140,26 @@
 
 .staff-image-text{
     position: absolute;
-    left: 5px;
-    right: 5px;
+    left: 0px;
+    right: 0px;
     top: 190px;
-    bottom: 0;
+    bottom: 15px;
     background-color: rgba(229, 229, 229, 0.624);
+    transition-duration: .4s;
+    overflow: hidden;
+    /* margin: 0 60px; */
+}
+.staff-image-text p{
+    margin: 0 16%;
+}
+
+.avatar-staff-image:hover + .staff-image-text{
+    top: 0px;
+}
+
+.staff-image-text:hover
+{
+    top: 0px;
 }
 .staff-join-us{
     text-align: center;
@@ -263,6 +280,9 @@
     .staff-join-us{
         margin: auto;
     }
+    .staff-image-text{
+        margin: 0 8%;
+    }
 }
 
 @media screen and (max-width: 992px){
@@ -277,6 +297,7 @@
 .story-picture-1{
     width: 50%;
 }
+
 .breakfest-image{
     margin-bottom: 10px;
     }
@@ -293,6 +314,7 @@
         position: absolute;
         top: 280px;
     }
+
     .staff-join-us{
         width: 350px;
     }
@@ -314,7 +336,6 @@
     }
     .food-price {
         position: absolute;
-        background-color: #fff;
         width: 62px;
         top: 5px;
         left: 55px;
@@ -346,10 +367,9 @@
     }
     .food-price {
         position: absolute;
-        background-color: #fff;
-        width: 40px;
-        padding: 10px;
-        font-size: 15px;
+        width: 60px;
+        padding: 15px;
+        font-size: 20px;
     }
 
     .breakfest-image{
@@ -359,5 +379,6 @@
     .story-picture-1{
         width: 70%;
     }
+
     
 }
