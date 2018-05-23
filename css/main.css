@@ -3,3 +3,5 @@
 @import "modules/navbar.css";
 @import "base/main-style.css";
 @import "layout/container.css";
+@import "modules/animations.css";
+@import "modules/modals.css"
