@@ -25,9 +25,3 @@ textarea:focus, textarea:active {
   box-shadow: none !important;
   border: 2px solid transparent !important;
 }
-
-/* overrides bootstraps active class */
-.navbar-light .navbar-nav .nav-link.active{
-    color: rgba(168, 36, 21, 0.547);
-    border-bottom: 2px solid rgba(168, 36, 21, 0.547);
-}

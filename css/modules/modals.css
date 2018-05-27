@@ -1,5 +1,5 @@
 .modal{
-    display: none;
+    display: block;
     position: fixed;
     z-index: 1;
     padding-top: 100px;
@@ -16,7 +16,7 @@
     padding: 0px 20px;
 }
 .modal-form{
-    display: none;
+    display: block;
     position: fixed;
     z-index: 1;
     top:0;
@@ -35,6 +35,12 @@
      border: 2px solid grey !important;
      outline: none !important;
      box-shadow: none !important;
+}
+.modal-form form label {
+    float: left;
+}
+.modal-form form button{
+    float: right;
 }
 
 .applyFormBtn{
@@ -55,7 +61,7 @@
     margin: auto;
     width: 70%;
     background-color: #e6e6e6;
-    padding: 10px;
+    padding: 10px 10px 50px 10px;
 }
 
 .food-video{
@@ -74,9 +80,17 @@
     color: rgb(168, 36, 21);
 }
 
+
 @media screen and (max-width: 769px){
     .video-modal-contentm, .form-modal-content{
         width: 90%;
+    }
+    .modal-form form button{
+        float: none;
+        width: 100%;
+    }
+    .form-modal-content{
+        padding: 10px;
     }
 }
 

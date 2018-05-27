@@ -12,14 +12,13 @@ const modalCloseX = document.querySelector('#close-video-modal'); // video modal
 
 const videoModalBtn = document.querySelector('#video-modal'); // video play button
 
-const videoModal = document.querySelector('.modal'); // video modal
-
-// const foodVideo = document.querySelector('.food-video');// video
-
-
-// Window functions
+/******************************************
+Window functions
+*******************************************/
+  //sticky navbar
 window.onscroll = function(){stickyNavbar()};
 
+  //closes form modals
 window.onclick = function()
     { 
       closeModal(), 
@@ -27,13 +26,11 @@ window.onclick = function()
     };
 
 
-// Event listeners 
+/******************************************
+Navigation Bar functions
+*******************************************/
 
-// modalCloseX.addEventListener('click', closeModalByX);
-videoModalBtn.addEventListener('click', openVideoModal);
-
-
-// Create sticky navbar when reaches navigation bar
+  // Create sticky navbar when reaches navigation bar
 function stickyNavbar() {
   if (window.pageYOffset >= sticky || window.pageYOffset > sticky) {
     navBar.classList.add("sticky");
@@ -42,15 +39,18 @@ function stickyNavbar() {
   }
 }
 
-// Closes navbar when line is click
+  // Closes navbar when link is clicked
 navLink.forEach(link => {
-  link.addEventListener("click", () =>{
+  link.addEventListener("click", () => {
       navBarUl.classList.remove('show');
   }); 
 });
 
 
-// Smooth scrolling function
+/******************************************
+Smooth scrolling function
+*******************************************/
+
 $(document).ready(function(){
   $(".nav-link").on('click', function(event){
     if(this.hash !== ""){
@@ -65,62 +65,97 @@ $(document).ready(function(){
   });
 });
 
+
+/******************************************
+Opens video modal
+*******************************************/
+videoModalBtn.addEventListener('click', openVideoModal);
+
 // open video modal
-function openVideoModal() {  
-  videoModal.style.display = "block";
-  videoModal.innerHTML = `
-  <div class="video-modal-content">
-  <span id="close-video-modal" onclick=closeModalByX() class="close">&times;</span>
-  <video class="food-video" src="assets/videos/food-video.mp4" controls></video>
-</div>`;
-  
+function openVideoModal() {
+  const modalVideo = document.createElement('div');
+  modalVideo.className = 'modal';
+  const cookingVideoBtn = document.querySelector('.cooking-video-text');
+  let parent = cookingVideoBtn.firstChild;
+  document.body.style.overflow = 'hidden';
+
+  modalVideo.innerHTML = `<div class="video-modal-content">
+      <span id="close-video-modal" onclick=closeModalByX() class="close">&times;</span>
+      <video class="food-video" src="assets/videos/food-video.mp4" controls></video>
+    </div>`;
+
+ cookingVideoBtn.insertBefore(modalVideo, parent)
 }
 
-// closes modal by clicking outside video-modal
+
+/******************************************
+Closes video modal by X & window cick
+*******************************************/
+
+  // closes modal by clicking outside video-modal
 function closeModal() {
+  const videoModal = document.querySelector('.modal');
+  const foodVideo = document.querySelector('.food-video');
   if (event.target == videoModal) {
-    const foodVideo = document.querySelector('.food-video');
-    videoModal.style.display = "none";
-    foodVideo.pause();
+    videoModal.remove();
+    document.body.style.overflow = 'scroll';
   }
 }
 
-// closes video modal by click on the X
+  // closes video modal by click on the X
 function closeModalByX() {
+  const videoModal = document.querySelector('.modal');
   const foodVideo = document.querySelector('.food-video');
-    videoModal.style.display = "none";
-    foodVideo.pause();
-}
-
-const menuItem = document.querySelector('#menu-item');
-
-menuItem.addEventListener('click', addMenuItem)
-
-function addMenuItem() {
-    let alert = document.createElement('span');
-    alert.innerHTML = "Item added";
-    let test = document.querySelector('.breakfest');
-    let parant = test.firstChild;
-    test.insertBefore(alert, parant)
+  videoModal.remove();
+  document.body.style.overflow = 'scroll';
 }
 
 
+/******************************************
+Function to add item w/ banner notification
+*******************************************/
 
+const menuItem = document.querySelectorAll('#menu-item');
+
+menuItem.forEach(item => {
+  item.addEventListener('click', addMenuItem)
+});
+
+function addMenuItem(e) {
+  // gets food name
+  let foodName = e.target.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML;
+   let alert = document.createElement('span');
+    let navbar = document.querySelector('.navigationBar-section');
+     let parant = navbar.firstChild;
+    
+    alert.className = 'added-item-banner';
+    alert.innerHTML = `${foodName} added to cart!`;
+    navbar.appendChild(alert, parant);
+    
+    setTimeout( function(){
+      alert.remove();
+    }, 2000)
+}
+
+
+/******************************************
+Opens application modal
+*******************************************/
 const applyBtn = document.querySelector('#joinUsBtn');
-
-const applyModal = document.querySelector('.modal-form');
 
 const closeFormModalEvent = document.querySelector('#close-form-modal');
 
-// closeFormModalEvent.addEventListener('click', closeFormModalByX)
 applyBtn.addEventListener('click', applyWithUs);
 
-// opens modal
-
 function applyWithUs(){
-   applyModal.style.display = "block";
-  // let form = document.createElement('div');
-  applyModal.innerHTML = `<div class="form-modal-content">
+  const modelForm = document.createElement('div');
+  modelForm.className = 'modal-form'
+  let coStatements = document.querySelector('.company-statements');
+  let parant = coStatements.firstChild;
+  document.body.style.overflow = 'hidden';
+
+  modelForm.innerHTML = `
+  <div class="form-modal-content">
   <span id="close-form-modal" onclick=closeFormModalByX() class="close">&times;</span>
               <form>
                    <div class="form-group">
@@ -153,15 +188,24 @@ function applyWithUs(){
                       <button type="submit" class="btn applyFormBtn">Submit</button>
                     </form>
               </div>`
+              coStatements.insertBefore(modelForm, parant);
 }
+
+/******************************************
+Closes application modal by X & window cick
+*******************************************/
+
 //closes modal by X
 function closeFormModalByX() {
-  applyModal.style.display = "none";
-  // applyModal.remove();
+  document.querySelector('.modal-form').remove();
+  document.body.style.overflow = 'scroll';
+  
 }
-//closes modal by click outside modal
+//closes by window click
 function closeFormModal() {
+  const applyModal = document.querySelector('.modal-form');
   if (event.target == applyModal) {
-    applyModal.style.display = "none";
+    applyModal.remove();
+    document.body.style.overflow = 'scroll';
   }
 }

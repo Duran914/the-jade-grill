@@ -1,0 +1,25 @@
+.modal-form{
+    animation-name: fadeIn;
+    animation-duration: .5s;
+
+}
+
+.added-item-banner{
+    animation-name: fadeIn;
+    animation-duration: .5s;
+}
+
+@keyframes fadeIn {
+    0%{ opacity: 0;}
+    100% {opacity: 100%;}
+}
+
+.modal {
+    animation-name: slideInFromTop;
+    animation-duration: .5s;
+}
+
+@keyframes slideInFromTop {
+    0%{ top: -1000px;}
+    100% {top: 0px;}
+}
