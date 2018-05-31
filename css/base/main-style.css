@@ -116,14 +116,15 @@
     font-size: 30px;
 }
 
-.add-item-btn{
-    margin-top: -20px; 
+.add-item-btn, .add-item-btn{
+    margin-top: -20px;
     border-radius: 0px;
-    background-color: rgb(61, 180, 61);
-    color: #fff;
+    border-color: rgb(61, 180, 61);
+    color: rgb(61, 180, 61);
+    transition-duration: .2s;
 }
 .add-item-btn:hover{
-    background-color: rgb(48, 145, 48);
+    box-shadow: 0 0 10px;
 }
 
 

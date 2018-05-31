@@ -12,6 +12,8 @@ const modalCloseX = document.querySelector('#close-video-modal'); // video modal
 
 const videoModalBtn = document.querySelector('#video-modal'); // video play button
 
+const cartItemsNumber = document.querySelector('#numberOfItems'); // cart number
+
 /******************************************
 Window functions
 *******************************************/
@@ -116,25 +118,30 @@ Function to add item w/ banner notification
 *******************************************/
 
 const menuItem = document.querySelectorAll('#menu-item');
-
+let cartNumber = 0;
 menuItem.forEach(item => {
   item.addEventListener('click', addMenuItem)
 });
 
 function addMenuItem(e) {
   // gets food name
-  let foodName = e.target.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML;
+  const foodName = e.target.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML;
    let alert = document.createElement('span');
-    let navbar = document.querySelector('.navigationBar-section');
-     let parant = navbar.firstChild;
+    // let navbar = document.querySelector('.navigationBar-section');
+     let parant = navBar.firstChild;
     
     alert.className = 'added-item-banner';
     alert.innerHTML = `${foodName} added to cart!`;
-    navbar.appendChild(alert, parant);
+    navBar.appendChild(alert, parant);
     
     setTimeout( function(){
       alert.remove();
     }, 2000)
+
+    cartNumber++;
+    cartItemsNumber.innerHTML = cartNumber;
+
+    addToCart(foodName);
 }
 
 
@@ -208,4 +215,74 @@ function closeFormModal() {
     applyModal.remove();
     document.body.style.overflow = 'scroll';
   }
+}
+
+/******************************************
+ Cart functions
+*******************************************/
+
+const cartNavLink = document.querySelector('#navLink-cart');
+
+cartNavLink.addEventListener('click', openCart);
+let cartItems = new Array();
+function addToCart(foodName) {
+  cartItems.push(foodName)
+}
+
+function openCart(e) {
+  console.log(cartItems);
+    const cart = document.createElement('div');
+    cart.className = 'cart';
+    let parent = navBar.firstChild;
+    document.body.style.overflow = 'hidden';
+  
+    cart.innerHTML = `<div class="cart-content">
+        <span id="close-video-modal" onclick=closeCartByX() class="close">&times;</span>
+        <div class="container">
+        <div class="row">
+          <h3>My Cart</h3>
+          </div>
+        <div class="row">
+        <table class="table table-striped">
+        <thead>
+          <tr>
+            <th scope="col">Food Item</th>
+            <th scope="col">Price</th>
+            <th scope="col">Quantity</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row"></th>
+            <td>$12</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <th scope="row">Rockfish</th>
+            <td>$24</td>
+            <td>1</td>
+          </tr>
+          <tr>
+            <th scope="row">Halibut</th>
+            <td>$27</td>
+            <td>1</td>
+          </tr>
+        </tbody>
+      </table>
+          </div>
+          <div class="row">
+            <div class="cartTotal">
+            <h4>Total = $23.00</h4>
+          </div>
+      </div>`;
+  
+      navBar.insertBefore(cart, parent)
+
+  e.preventDefault();
+}
+
+
+function closeCartByX() {
+  document.querySelector('.cart').remove();
+  document.body.style.overflow = 'scroll';
 }
