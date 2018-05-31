@@ -41,6 +41,11 @@
     background: rgba(168, 36, 21, 0.547);
 }
 
+.cartNumber{
+    position: absolute;
+    margin-top: -15px;
+}
+
 .sticky{
     position: fixed;
     top: 0;

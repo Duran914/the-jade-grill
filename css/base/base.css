@@ -23,5 +23,5 @@ select:focus, select:active,
 textarea:focus, textarea:active {
   outline: none !important;
   box-shadow: none !important;
-  border: 2px solid transparent !important;
+  /* border: 2px solid transparent !important; */
 }
