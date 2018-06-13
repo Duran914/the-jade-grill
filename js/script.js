@@ -123,9 +123,12 @@ menuItem.forEach(item => {
   item.addEventListener('click', addMenuItem)
 });
 
-function addMenuItem(e) {
+function addMenuItem(fooditem) {
   // gets food name
-  const foodName = e.target.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML;
+  const foodName = fooditem.target.previousSibling.previousSibling.previousSibling.previousSibling.innerHTML;
+  let foodPrice = fooditem.target.parentElement.previousSibling.previousSibling.innerHTML;
+  foodPrice = parseInt(foodPrice.split('').slice(1).join(''))
+  
    let alert = document.createElement('span');
     // let navbar = document.querySelector('.navigationBar-section');
      let parant = navBar.firstChild;
@@ -141,7 +144,7 @@ function addMenuItem(e) {
     cartNumber++;
     cartItemsNumber.innerHTML = cartNumber;
 
-    addToCart(foodName);
+    addToCart(foodName, foodPrice);
 }
 
 
@@ -222,20 +225,70 @@ function closeFormModal() {
 *******************************************/
 
 const cartNavLink = document.querySelector('#navLink-cart');
-
 cartNavLink.addEventListener('click', openCart);
-let cartItems = new Array();
-function addToCart(foodName) {
-  cartItems.push(foodName)
+let cartItems = [];
+let cartPrices = []; //to be removed
+
+function addToCart(foodName, foodPrice) {
+  let newItem = {
+      'name': foodName,
+      'price': foodPrice,
+      'quantity': 1
+  }
+  let add = true; // boolen to determine if item in cart
+  
+    for (let i = 0; i < cartItems.length; i++){
+      if(cartItems[i].name == newItem.name){
+        console.log('match'); 
+        add = false; // new object will NOT be added
+        cartItems[i].quantity += 1; // increases quantity if item in cart
+      }
+    }
+
+    if(add == true){
+      cartItems.push(newItem)
+    }
+
+  //  cartPrices.push(foodPrice)  //to be removed
+
 }
+
 
 function openCart(e) {
   console.log(cartItems);
+  
     const cart = document.createElement('div');
     cart.className = 'cart';
     let parent = navBar.firstChild;
     document.body.style.overflow = 'hidden';
-  
+
+//to be removed and changed with object for loop
+
+    let myItems = ''; // cartItems
+    let removeAllButton = ""; // remove all button
+
+    for(let i = 0; i < cartItems.length; i++){
+      for(let j = 0; i < cartPrices.length; i++){
+        myItems += ` <tr>
+        <th scope="row">${cartItems[i]}</th>
+        <td id="cartItem">${cartPrices[i]}</td>
+    
+        <td id="removeItem"><button onclick=removeItem(event)>Remove</button></td>
+      </tr>`;
+      } 
+    }
+
+// Templete for cart UI
+
+    // display remove all button if cart contains 1 or more items
+
+    if (cartItems.length != 0) {
+      removeAllButton = `<div class="col-4">
+      <div class="removeAll">
+      <button id="removeAllButton" onclick=removeAllCartItems()>Remove all items</button>
+     </div>
+    </div>`
+    }
     cart.innerHTML = `<div class="cart-content">
         <span id="close-video-modal" onclick=closeCartByX() class="close">&times;</span>
         <div class="container">
@@ -252,37 +305,55 @@ function openCart(e) {
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <th scope="row"></th>
-            <td>$12</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <th scope="row">Rockfish</th>
-            <td>$24</td>
-            <td>1</td>
-          </tr>
-          <tr>
-            <th scope="row">Halibut</th>
-            <td>$27</td>
-            <td>1</td>
-          </tr>
+        ${myItems}
         </tbody>
       </table>
+        <br>
           </div>
           <div class="row">
+           <div class="col-8"
             <div class="cartTotal">
-            <h4>Total = $23.00</h4>
-          </div>
+            <h4>Total = $</h4> 
+           </div>
+            ${removeAllButton}
       </div>`;
-  
-      navBar.insertBefore(cart, parent)
-
+    
+    navBar.insertBefore(cart, parent) //inserts card modal
   e.preventDefault();
+  
 }
-
 
 function closeCartByX() {
   document.querySelector('.cart').remove();
   document.body.style.overflow = 'scroll';
+}
+// Removes items from cart modal
+function removeItem(event){
+
+  let item = event.target.parentElement.parentElement;
+  
+  item.remove();
+  if(cartNumber > 0){
+    cartNumber--;
+  }
+  
+  cartItemsNumber.innerHTML = cartNumber;
+  
+  console.log(item);
+  console.log('clicked');
+  console.log(cartNumber);
+  
+}
+
+// Removes all items from cart is Remove all button is displayed
+function removeAllCartItems(event){
+  console.log(cartItems);
+  cartItems.length = 0;
+  cartPrices.length = 0;
+  cartNumber = 0;
+  cartItemsNumber.innerHTML = cartNumber;
+  // document.querySelector('#removeAllButton').remove();
+  console.log(cartItems);
+  console.log(event);
+  
 }
