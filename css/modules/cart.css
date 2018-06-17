@@ -1,0 +1,43 @@
+.cartButton{
+    width: 100%;
+}
+
+.delete{
+    border-radius: 0px;
+    border-color: rgb(175, 45, 45);
+    color: rgb(175, 45, 45);
+    background-color: transparent;
+    transition-duration: .2s;
+}
+.delete:hover{
+    box-shadow: 0 0 10px;
+    color: #ffffff;
+    background-color: rgb(175, 45, 45);
+}
+
+.greenBtn{
+    border-radius: 0px;
+    border-color: rgb(61, 180, 61);
+    color: rgb(61, 180, 61);
+    background-color: transparent;
+    transition-duration: .2s;
+}
+.greenBtn:hover{
+    box-shadow: 0 0 10px;
+    color: #ffffff;
+    background-color: rgb(61, 180, 61);
+}
+
+.yellowBtn{
+    border-radius: 0px;
+    border-color: #ffc107;
+    color: #ffc107;
+    background-color: transparent;
+    transition-duration: .2s;
+}
+.yellowBtn:hover{
+    box-shadow: 0 0 10px;
+    color: #ffffff;
+    background-color: #ffc107;
+}
+

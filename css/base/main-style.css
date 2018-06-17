@@ -116,7 +116,7 @@
     font-size: 30px;
 }
 
-.add-item-btn, .add-item-btn{
+.add-item-btn{
     margin-top: -20px;
     border-radius: 0px;
     border-color: rgb(61, 180, 61);
@@ -172,7 +172,7 @@
     background-color: rgba(229, 229, 229, 0.624);
     transition-duration: .4s;
     overflow: hidden;
-    /* margin: 0 60px; */
+    margin: 0 15%;
 }
 .staff-image-text p{
     margin: 0 16%;
