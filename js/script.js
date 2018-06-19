@@ -9,7 +9,8 @@ window.onscroll = function(){stickyNavbar()};
 window.onclick = function()
     { 
       closeModal(), 
-      closeFormModal() 
+      closeFormModal(),
+      closeCart()
     };
 
 
@@ -132,7 +133,7 @@ function addMenuItem(fooditem) {
   alert.innerHTML = `${foodName} added to cart!`;
   navBar.appendChild(alert, parant);
 
-  setTimeout(function () {
+  setTimeout(() => {
     alert.remove();
   }, 2000)
 
@@ -192,7 +193,7 @@ function applyWithUs(){
                                 </div>
                       <button type="submit" class="btn applyFormBtn">Submit</button>
                     </form>
-              </div>`
+              </div>`;
               coStatements.insertBefore(modelForm, parant);
 }
 
@@ -223,6 +224,7 @@ const cartNavLink = document.querySelector('#navLink-cart');
 let cartAmountTotal = 0;
 cartNavLink.addEventListener('click', openCart);
 
+// adds food item object to array function
 function addToCart(foodName, foodPrice) {
   let newItem = {
     'name': foodName,
@@ -234,19 +236,12 @@ function addToCart(foodName, foodPrice) {
   for (let i = 0; i < cartItems.length; i++) {
     if (cartItems[i].name == newItem.name) {
       add = false; // new object will NOT be added
-      cartItems[i].quantity += 1; // increases quantity if item in cart
+      cartItems[i].quantity += 1; // increases quantity becuase the same item is present in cart
     }
-    // console.log(cartItems[i]);
-    
   }
-  // console.log(cartAmountTotal);
-  
-
   if (add == true) {
     cartItems.push(newItem) // adds new object to array
-
   }
-
 }
 
 // OPENS CART
@@ -274,27 +269,26 @@ function openCart(e) {
 
 // Templete for cart UI
 
-  // display remove all button if cart contains 1 or more items
+  // displays check-out and remove all buttons if cart contains 1 or more items
   if (cartItems.length != 0) {
     removeAllButton = `
-        <div class="col-4">
-        <div class="removeAll">
-        <button id="removeAllButton" class="btn cartButton yellowBtn" onclick=removeAllCartItems()>Remove all items</button>
-      </div>
-      </div>
-      </div>
       <div class="row">
-      <div class="col-4">
-      <div class="removeAll">
-      <button id="checkOutButton" class="btn cartButton greenBtn" onclick=removeAllCartItems()>Check Out</button>
+      <div class="col-6">
+      <div class="checkOut">
+      <button id="checkOutBtn" class="btn cartButton greenBtn" onclick=submitOrder()>Check Out</button>
      </div>
     </div>
+    <div class="col-6">
+    <div class="removeAll">                                                      
+    <button id="removeAllBtn" class="btn cartButton yellowBtn" onclick=removeAllCartItems()>Clear Cart</button>
+  </div>
+  </div>
     </div>`;
   }
 
   cart.innerHTML = `<div class="cart-content">
         <span id="close-video-modal" onclick=closeCartByX() class="close">&times;</span>
-        <div class="container">
+        <div id="cartContainer" class="container">
         <div class="row">
           <h3>My Cart</h3>
           </div>
@@ -302,7 +296,7 @@ function openCart(e) {
         <table class="table table-striped">
         <thead>
           <tr>
-            <th scope="col">Food Item</th>
+            <th scope="col">Item</th>
             <th scope="col">Price</th>
             <th scope="col">Quantity</th>
           </tr>
@@ -316,31 +310,41 @@ function openCart(e) {
           <div class="row">
            <div class="col-8"
             <div class="cartTotal">
-            <h4 id="cartAmountTotal">Total = $${cartAmountTotal}</h4> 
+            <h4>Total = $<span id="cartTotalValue">${cartAmountTotal}</span>.00</h4> 
+            </div>
            </div>
-            ${removeAllButton}
-      </div>`;
+            ${removeAllButton}`;
 
   navBar.insertBefore(cart, parent) //inserts card modal
   e.preventDefault();
-
 }
 
 function closeCartByX() {
   document.querySelector('.cart').remove();
   document.body.style.overflow = 'scroll';
-  cartAmountTotal = 0;
+  cartAmountTotal = 0; //empty cart object
+}
+
+function closeCart() {
+  if (event.target == document.querySelector('.cart')) {
+    document.querySelector('.cart').remove()
+    document.body.style.overflow = 'scroll';
+    cartAmountTotal = 0; //empty cart object
+  }
 }
 
 // Removes items from cart modal
 function removeItem(event) {
-
+  
   let item = event.target.parentElement.parentElement;
   let itemName = event.target.parentElement.previousElementSibling.previousElementSibling.previousElementSibling.innerHTML;
   let itemQuantity = event.target.parentElement.previousElementSibling;
 
   for (let i = 0; i < cartItems.length; i++) {
     if (cartItems[i].name == itemName) {
+      cartAmountTotal -= cartItems[i].price; // subtracts item price from cart total
+       document.querySelector('#cartTotalValue').innerHTML = cartAmountTotal; // updates cart UI
+
       if (cartItems[i].quantity > 1) {
         cartItems[i].quantity--; // removes 1 from quantity in object
         itemQuantity.innerHTML = cartItems[i].quantity; // remove 1 from quantity in UI
@@ -348,29 +352,47 @@ function removeItem(event) {
       else {
         cartItems.splice(i, 1); // deletes item(object) from cart array
         item.remove();// deletes item(<td>) from cart UI
-      }
+      }   
     }
   }
   cartNumber--; // decrements cart number of items
-
   if (cartNumber == 0) {
-    document.querySelector('#removeAllButton').remove();
+    clearCart();
   }
   cartItemsNumber.innerHTML = cartNumber;
 }
 
 // Removes all items from cart is Remove all button is displayed
-function removeAllCartItems(event) {
+function removeAllCartItems() {
   const cartItemTd = document.querySelectorAll('.cart-td-content');
 
   cartItems = [];
   cartNumber = cartItems.length;
   cartItemsNumber.innerHTML = cartNumber;
-
+  cartAmountTotal = 0;
+  document.querySelector('#cartTotalValue').innerHTML = cartAmountTotal;
 
   cartItemTd.forEach(TdItem => {
     TdItem.remove();   // removes all cart items(<tr>)
   });
+  clearCart();
+}
 
-  document.querySelector('#removeAllButton').remove();
+// removes cart buttons 
+clearCart = () => {
+  document.querySelectorAll('.btn.cartButton').forEach(btn => {
+    btn.remove();
+  });
+}
+
+// displays order submmited on cart
+function submitOrder(){
+  document.querySelector('#cartContainer').innerHTML = `<div class="row">
+    <div class="col-12 text-center">
+    <h2>Thank You!</h2>
+    <i class="far fa-check-circle"></i>
+    <h3>Your Order Has Been Placed</h3>
+    </div>
+  </div>`;
+  removeAllCartItems(); // clears cart
 }

@@ -4,40 +4,36 @@
 
 .delete{
     border-radius: 0px;
-    border-color: rgb(175, 45, 45);
-    color: rgb(175, 45, 45);
-    background-color: transparent;
+    background-color: #af2d2d;
+    color: #ffffff;
     transition-duration: .2s;
 }
 .delete:hover{
-    box-shadow: 0 0 10px;
-    color: #ffffff;
-    background-color: rgb(175, 45, 45);
+    background-color: #8e2525;
 }
 
 .greenBtn{
     border-radius: 0px;
-    border-color: rgb(61, 180, 61);
-    color: rgb(61, 180, 61);
-    background-color: transparent;
+    background-color: #3db43d;
+    color: #ffffff;
     transition-duration: .2s;
 }
 .greenBtn:hover{
-    box-shadow: 0 0 10px;
-    color: #ffffff;
-    background-color: rgb(61, 180, 61);
+    background-color: #2e852e;
 }
 
 .yellowBtn{
     border-radius: 0px;
-    border-color: #ffc107;
-    color: #ffc107;
-    background-color: transparent;
+    color: #ffffff;
+    background-color: #ffc107;
     transition-duration: .2s;
 }
 .yellowBtn:hover{
-    box-shadow: 0 0 10px;
-    color: #ffffff;
-    background-color: #ffc107;
+    background-color: #cc9900;
 }
 
+
+.fa-check-circle{
+    color: #3db43d;
+    font-size: 100px;
+}
