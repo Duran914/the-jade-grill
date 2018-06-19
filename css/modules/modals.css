@@ -94,9 +94,9 @@
 
 .cart-content{
     margin: auto;
-    width: 70%;
+    width: 60%;
     background-color: #e6e6e6;
-    padding: 10px 10px 50px 10px;
+    padding: 10px 10px 10px 10px;
 }
 
 
@@ -111,6 +111,14 @@
     }
     .form-modal-content{
         padding: 10px;
+    }
+    .cart-content{
+        width: 75%;
+    }
+}
+@media screen and (max-width: 576px){
+    .cart-content{
+        width: 95%;
     }
 }
 
