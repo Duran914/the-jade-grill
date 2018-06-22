@@ -163,35 +163,35 @@ function applyWithUs(){
   modelForm.innerHTML = `
   <div class="form-modal-content">
   <span id="close-form-modal" onclick=closeFormModalByX() class="close">&times;</span>
-              <form>
+              <form onsubmit=submitEmpForm(event)>
                    <div class="form-group">
-                        <label for="first-name">First Name</label>
-                        <input type="text" class="form-control" id="first-name" placeholder="First name">
+                        <label for="first-name">First Name*</label><span class="err fname"></span>
+                        <input type="text" class="form-control" id="first-name" onkeyup=checkFirstName(event) placeholder="First name">
                       </div>
                       <div class="form-group">
-                        <label for="last-name">Last Name</label>
-                        <input type="text" class="form-control" id="last-name" placeholder="Last name">
+                        <label for="last-name">Last Name*</label><span class="err lname"></span>
+                        <input type="text" class="form-control" id="last-name" onkeyup=checkLastName(event) placeholder="Last name">
                       </div>
                       <div class="form-group">
-                              <label for="category">Category</label>
-                              <select class="form-control" id="exampleFormControlSelect1">
+                              <label for="category">Category*</label><span class="err select"></span>
+                              <select class="form-control" id="jobCategorySelect">
                                 <option value="Choose a Category">Choose a Category</option>
-                                <option>Accounting</option>
-                                <option>Hospitality</option>
-                                <option>Information Technology</option>
-                                <option>Marketing</option>
-                                <option>Human Resources</option>
+                                <option value="Accounting">Accounting</option>
+                                <option value="Hospitality">Hospitality</option>
+                                <option value="IT">Information Technology</option>
+                                <option value="Marketing">Marketing</option>
+                                <option HR>Human Resources</option>
                               </select>
                             </div>
                             <div class="form-group">
-                                  <label for="upload">Upload a Resume</label>
+                                  <label for="upload">Upload a Resume*</label><span class="err fileUpload"></span>
                                   <input type="file" class="form-control-file" id="file-upload">
                            </div>
                            <div class="form-group">
-                                  <label for="cover-letter">Cover Letter</label>
-                                  <textarea class="form-control message-field" id="messageField" rows="5"></textarea>
+                                  <label for="cover-letter">Cover Letter</label><span class="err coverLetter"></span>
+                                  <textarea class="form-control message-field" id="cover-letter" onkeyup=checkCoverLetter() rows="5"></textarea>
                                 </div>
-                      <button type="submit" class="btn applyFormBtn">Submit</button>
+                      <input type="submit" class="btn applyFormBtn" value="Submit">
                     </form>
               </div>`;
               coStatements.insertBefore(modelForm, parant);
@@ -395,4 +395,82 @@ function submitOrder(){
     </div>
   </div>`;
   removeAllCartItems(); // clears cart
+}
+
+
+/******************************************
+Regular expressions
+*******************************************/
+
+function checkFirstName(){
+
+  const RegEx = /^[a-zA-Z- ]{2,25}$/;
+  const fnameErr = document.querySelector('.err.fname');
+  const firstName = document.querySelector('#first-name');
+
+  if (!RegEx.test(firstName.value)) {
+      firstName.classList.add('is-invalid');
+      firstName.style.border = '2px solid #af2d2d';
+      fnameErr.innerHTML = 'Please enter your first name';
+      fnameErr.style.color = '#af2d2d';
+  } else {
+      firstName.classList.remove('is-invalid');
+      firstName.style.border = '';
+      fnameErr.innerHTML = '';
+  } 
+}
+
+function checkLastName(){
+
+  const RegEx = /^[a-zA-Z- ]{2,25}$/;
+  const lnameErr = document.querySelector('.err.lname');
+  const lastName = document.querySelector('#last-name');
+
+  if (!RegEx.test(lastName.value)) {
+      lastName.classList.add('is-invalid');
+      lastName.style.border = '2px solid #af2d2d';
+      lnameErr.innerHTML = 'Please enter your last name';
+      lnameErr.style.color = '#af2d2d';
+  } else {
+      lastName.classList.remove('is-invalid');
+      lastName.style.border = '';
+      lnameErr.innerHTML = '';
+  } 
+}
+
+function checkCoverLetter(){
+
+  const RegEx = /^[a-zA-Z0-9\.\,\$\-?!' ]{0,250}$/;
+  const coverLetterErr = document.querySelector('.err.coverLetter')
+  const coverLetter = document.querySelector('#cover-letter');
+
+  if (!RegEx.test(coverLetter.value)) {
+      coverLetter.classList.add('is-invalid');
+      coverLetter.style.border = '2px solid #ff5050';
+      coverLetterErr.innerHTML = 'Only letters, numbers and punctuation.';
+      coverLetterErr.style.color = '#af2d2d';
+      }
+     else {
+      coverLetter.classList.remove('is-invalid');
+      coverLetter.style.border = '';
+      coverLetterErr.innerHTML = '';
+  }
+}
+
+function submitEmpForm(event){
+  const fileInputErr = document.querySelector('.err.fileUpload');
+  const selectInputErr = document.querySelector('.err.select');
+
+  if(document.querySelector('#file-upload').value == ''){
+    fileInputErr.innerHTML = 'Please upload a file';
+    fileInputErr.style.color = "#af2d2d";
+
+  }
+
+  if (document.querySelector('#jobCategorySelect').value == 'Choose a Category') {
+    selectInputErr.innerHTML = 'Please select a category';
+    selectInputErr.style.color = "#af2d2d";
+  }
+
+  event.preventDefault();
 }
