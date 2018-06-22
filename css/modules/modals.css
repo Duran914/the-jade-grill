@@ -32,14 +32,14 @@
 .modal-form form input[type="text"],
 .modal-form form select,
 .modal-form form textarea{
-     border: 2px solid grey !important;
-     outline: none !important;
-     box-shadow: none !important;
+     border: 2px solid grey;
+     outline: none;
+     box-shadow: none;
 }
 .modal-form form label {
     float: left;
 }
-.modal-form form button{
+.modal-form form input[type='submit']{
     float: right;
 }
 
