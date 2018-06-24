@@ -111,6 +111,7 @@
     }
     .form-modal-content{
         padding: 10px;
+        padding-bottom: 50px;
     }
     .cart-content{
         width: 75%;

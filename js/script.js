@@ -163,18 +163,18 @@ function applyWithUs(){
   modelForm.innerHTML = `
   <div class="form-modal-content">
   <span id="close-form-modal" onclick=closeFormModalByX() class="close">&times;</span>
-              <form onsubmit=submitEmpForm(event)>
+              <form onsubmit=submitAppForm(event) id="application-form">
                    <div class="form-group">
                         <label for="first-name">First Name*</label><span class="err fname"></span>
-                        <input type="text" class="form-control" id="first-name" onkeyup=checkFirstName(event) placeholder="First name">
+                        <input type="text" class="form-control" id="first-name" onkeyup=validateFirstName() placeholder="First name">
                       </div>
                       <div class="form-group">
                         <label for="last-name">Last Name*</label><span class="err lname"></span>
-                        <input type="text" class="form-control" id="last-name" onkeyup=checkLastName(event) placeholder="Last name">
+                        <input type="text" class="form-control" id="last-name" onkeyup=validateLastName() placeholder="Last name">
                       </div>
                       <div class="form-group">
                               <label for="category">Category*</label><span class="err select"></span>
-                              <select class="form-control" id="jobCategorySelect">
+                              <select onfocusout=validateSelectCategory() class="form-control" id="jobCategorySelect">
                                 <option value="Choose a Category">Choose a Category</option>
                                 <option value="Accounting">Accounting</option>
                                 <option value="Hospitality">Hospitality</option>
@@ -185,11 +185,11 @@ function applyWithUs(){
                             </div>
                             <div class="form-group">
                                   <label for="upload">Upload a Resume*</label><span class="err fileUpload"></span>
-                                  <input type="file" class="form-control-file" id="file-upload">
+                                  <input type="file" onblur=validateFileUpload() class="form-control-file" id="file-upload">
                            </div>
                            <div class="form-group">
                                   <label for="cover-letter">Cover Letter</label><span class="err coverLetter"></span>
-                                  <textarea class="form-control message-field" id="cover-letter" onkeyup=checkCoverLetter() rows="5"></textarea>
+                                  <textarea class="form-control message-field" id="cover-letter" onkeyup=validateTextarea() rows="5"></textarea>
                                 </div>
                       <input type="submit" class="btn applyFormBtn" value="Submit">
                     </form>
@@ -402,7 +402,9 @@ function submitOrder(){
 Regular expressions
 *******************************************/
 
-function checkFirstName(){
+// Applications form
+
+function validateFirstName(){
 
   const RegEx = /^[a-zA-Z- ]{2,25}$/;
   const fnameErr = document.querySelector('.err.fname');
@@ -420,7 +422,7 @@ function checkFirstName(){
   } 
 }
 
-function checkLastName(){
+function validateLastName(){
 
   const RegEx = /^[a-zA-Z- ]{2,25}$/;
   const lnameErr = document.querySelector('.err.lname');
@@ -438,7 +440,7 @@ function checkLastName(){
   } 
 }
 
-function checkCoverLetter(){
+function validateTextarea(){
 
   const RegEx = /^[a-zA-Z0-9\.\,\$\-?!' ]{0,250}$/;
   const coverLetterErr = document.querySelector('.err.coverLetter')
@@ -457,20 +459,56 @@ function checkCoverLetter(){
   }
 }
 
-function submitEmpForm(event){
+function validateFileUpload(){
   const fileInputErr = document.querySelector('.err.fileUpload');
-  const selectInputErr = document.querySelector('.err.select');
-
+  
   if(document.querySelector('#file-upload').value == ''){
     fileInputErr.innerHTML = 'Please upload a file';
     fileInputErr.style.color = "#af2d2d";
-
   }
+  else{
+    fileInputErr.innerHTML = '';
+  }
+}
+
+function validateSelectCategory(){
+  const selectInputErr = document.querySelector('.err.select');
 
   if (document.querySelector('#jobCategorySelect').value == 'Choose a Category') {
     selectInputErr.innerHTML = 'Please select a category';
     selectInputErr.style.color = "#af2d2d";
   }
+  else{
+    selectInputErr.innerHTML = '';
+  }
+}
 
-  event.preventDefault();
+function submitAppForm(e){
+  const firstNameInput = document.querySelector('#first-name');
+  const lastNameInput = document.querySelector('#last-name');
+  const jobCategoryInput = document.querySelector('#jobCategorySelect');
+  const fileUploadInput = document.querySelector('#file-upload');
+
+  validateLastName();
+  validateFirstName();
+  validateTextarea();
+  validateSelectCategory();
+  validateFileUpload();
+
+
+  if(firstNameInput.classList.contains('is-invalid') || firstNameInput.value == '' ||
+  lastNameInput.classList.contains('is-invalid') || lastNameInput.value == '' ||
+  jobCategoryInput.classList.contains('is-invalid') || jobCategoryInput.value == '' ||
+  fileUploadInput.classList.contains('is-invalid') || fileUploadInput.value == '' ||
+  document.querySelector('#cover-letter').classList.contains('is-invalid')){
+ }
+ else{
+ document.querySelector('.form-modal-content').innerHTML = `
+    <span id="close-form-modal" onclick=closeFormModalByX() class="close">&times;</span>
+    <h2>Your Application has been sent!</h2>
+    <i class="fas fa-paper-plane"></i>
+    <h3>Thank you for applying</h3>`;
+    document.querySelector('.form-modal-content').style.paddingBottom = '10px';
+    }
+ e.preventDefault(); // front-end only(no actual submission)
 }
